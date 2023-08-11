@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./StopWatch.css"
 
-
 const StopWatch = () => {
     var [state, setState] = useState(1);
     var [Times, SetTime] = useState({ h: 0, m: 0, s: 0, ms: 0 });
@@ -9,7 +8,6 @@ const StopWatch = () => {
     var UpdatedHr = Times.h, UpdatedMin = Times.m, UpdatedSec = Times.s, UpdatedMSec = Times.ms;
 
     const Run = () => {
-
         UpdatedMSec = UpdatedMSec + 1;
         if (UpdatedMSec > 99) {
             UpdatedSec = UpdatedSec + 1
@@ -42,22 +40,21 @@ const StopWatch = () => {
         SetTime({ h: 0, m: 0, s: 0, ms: 0 })
         setState(1);
     }
+
     const Resume = () => {
         SetIntervalID(setInterval(Run, 10));
-
         setState(2);
     }
+
     return (
         <>
             <div className="Body">
                 <div className="MainContainer">
-                    <br />
                     <Timer Times={Times} />
                     <div className="ButtonGroup">
                         <ButtonGroup state={state} setState={setState} Increment={Increment} Stop={Stop} Reset={Reset} Resume={Resume} />
                     </div>
                 </div>
-
             </div>
         </>
     );
@@ -91,7 +88,6 @@ const ButtonGroup = (Props) => {
 
 const Timer = (Props) => {
     var { h, m, s, ms } = Props.Times
-
     if (h < 10) {
         h = "0" + h;
     }
@@ -107,7 +103,8 @@ const Timer = (Props) => {
     return (
         <>
             <div className="display">
-                <span>{h}</span>:<span>{m}</span>:<span>{s}</span>:<span>{ms}</span>
+                {/* <span>{h}</span>:<span>{m}</span>:<span>{s}</span>:<span>{ms}</span> */}
+                <text>{h}<span>:</span>{m}<span>:</span>{s}<span>:</span>{ms}</text>
             </div>
         </>
     );
